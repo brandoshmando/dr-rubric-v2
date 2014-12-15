@@ -1,0 +1,2 @@
+class Assistaant < User
+end
