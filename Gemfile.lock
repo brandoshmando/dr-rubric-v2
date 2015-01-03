@@ -131,6 +131,8 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
+    shoulda-matchers (2.7.0)
+      activesupport (>= 3.0.0)
     slop (3.6.0)
     spring (1.2.0)
     spring-commands-rspec (1.0.4)
@@ -168,5 +170,6 @@ DEPENDENCIES
   rails-api
   rb-fsevent
   rspec-rails
+  shoulda-matchers
   spring
   spring-commands-rspec
