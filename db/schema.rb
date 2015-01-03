@@ -11,15 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141216041128) do
+ActiveRecord::Schema.define(version: 20141230043644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assistants_sections", id: false, force: true do |t|
+    t.integer "assistant_id"
+    t.integer "section_id"
+  end
+
+  add_index "assistants_sections", ["assistant_id"], name: "index_assistants_sections_on_assistant_id", using: :btree
+  add_index "assistants_sections", ["section_id"], name: "index_assistants_sections_on_section_id", using: :btree
 
   create_table "comment_scores", force: true do |t|
     t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comment_scoreable_id"
+    t.string   "comment_scoreable_type"
   end
 
   create_table "comments", force: true do |t|
@@ -34,6 +44,17 @@ ActiveRecord::Schema.define(version: 20141216041128) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "professor_id"
+  end
+
+  create_table "courses_evals", id: false, force: true do |t|
+    t.integer "courses_id"
+    t.integer "evals_id"
+  end
+
+  create_table "courses_grading_periods", id: false, force: true do |t|
+    t.integer "courses_id"
+    t.integer "grading_periods_id"
   end
 
   create_table "criteria", force: true do |t|
@@ -54,6 +75,8 @@ ActiveRecord::Schema.define(version: 20141216041128) do
     t.integer  "total_points"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
   end
 
   create_table "grading_periods", force: true do |t|
@@ -69,12 +92,20 @@ ActiveRecord::Schema.define(version: 20141216041128) do
     t.integer  "section"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "section_id"
+  end
+
+  create_table "rosters_students", id: false, force: true do |t|
+    t.integer "rosters_id"
+    t.integer "students_id"
   end
 
   create_table "sections", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "course_id"
+    t.integer  "roster_id"
   end
 
   create_table "students", force: true do |t|
