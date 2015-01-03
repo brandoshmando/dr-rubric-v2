@@ -16,6 +16,7 @@ group :developement, :test do
   gem 'guard-rspec'
   gem 'rb-fsevent' if `uname` =~ /Darwin/
   gem 'factory_girl'
+  gem 'faker'
 end
 
 
