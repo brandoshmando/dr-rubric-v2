@@ -15,6 +15,7 @@ group :developement, :test do
   gem 'spring-commands-rspec'
   gem 'guard-rspec'
   gem 'rb-fsevent' if `uname` =~ /Darwin/
+  gem 'factory_girl'
 end
 
 
