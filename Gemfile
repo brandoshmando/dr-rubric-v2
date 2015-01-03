@@ -7,10 +7,15 @@ gem 'rails-api'
 
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers', branch: '0-8-stable'
 
-gem 'spring', :group => :development
-
 gem 'pg'
 
+group :developement, :test do
+  gem 'spring'
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
+  gem 'guard-rspec'
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
+end
 
 
 # To use ActiveModel has_secure_password
