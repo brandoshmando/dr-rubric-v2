@@ -20,7 +20,6 @@ group :developement, :test do
   gem 'shoulda-matchers', require: false
 end
 
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
