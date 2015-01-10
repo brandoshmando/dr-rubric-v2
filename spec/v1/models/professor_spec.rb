@@ -9,4 +9,14 @@ describe Professor do
   it { should validate_presence_of :last_name }
   it { should validate_presence_of :email }
   it { should validate_presence_of :type }
+
+  describe "model validates" do
+    context "first_name is less than fifty charcters" do
+      it "is not saved successfully" do
+        name = "a" * 51
+        user = build(:professor, first_name: name)
+        expect(user).not_to be_valid
+      end
+    end
+  end
 end
