@@ -38,10 +38,10 @@ describe Professor do
   end
 
   context "last_name is less than fifty charcters" do
-      it "is saved successfully" do
-        name = "a" * 32
-        user = build(:professor, first_name: name)
-        expect(user).to be_valid
-      end
+    it "is saved successfully" do
+      name = "a" * 32
+      user = build(:professor, first_name: name)
+      expect(user).to be_valid
     end
+  end
 end
