@@ -9,5 +9,6 @@ describe Eval, :type => :model do
   it { should ensure_length_of(:title).is_at_most(50) }
   # it { should have_and_belong_to_many :courses } Fails for some reason...
   it { should have_many :criterion }
-
+  it { should have_many :grades }
+  it { should belong_to :professor }
 end
