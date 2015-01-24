@@ -9,6 +9,8 @@ describe Professor do
   it { should validate_presence_of :last_name }
   it { should validate_presence_of :email }
   it { should validate_presence_of :type }
+  it { should have_many :evals }
+  it { should have_many :courses }
 
   describe "model validates" do
     context "first_name is greater than fifty charcters" do
