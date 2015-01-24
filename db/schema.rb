@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150124194931) do
+ActiveRecord::Schema.define(version: 20150124210020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,9 +47,12 @@ ActiveRecord::Schema.define(version: 20150124194931) do
   end
 
   create_table "courses_evals", id: false, force: true do |t|
-    t.integer "courses_id"
-    t.integer "evals_id"
+    t.integer "eval_id"
+    t.integer "course_id"
   end
+
+  add_index "courses_evals", ["course_id"], name: "index_courses_evals_on_course_id", using: :btree
+  add_index "courses_evals", ["eval_id"], name: "index_courses_evals_on_eval_id", using: :btree
 
   create_table "courses_grading_periods", id: false, force: true do |t|
     t.integer "courses_id"
@@ -61,6 +64,7 @@ ActiveRecord::Schema.define(version: 20150124194931) do
     t.integer  "total_points"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "eval_id"
   end
 
   create_table "evals", force: true do |t|
