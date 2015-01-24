@@ -1,4 +1,4 @@
-require_relative '../../rails_helper'
+require_relative '../rails_helper'
 
 describe Professor do
   it "has valid factory" do
