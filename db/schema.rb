@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150111024101) do
+ActiveRecord::Schema.define(version: 20150124192318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150111024101) do
   add_index "assistants_sections", ["section_id"], name: "index_assistants_sections_on_section_id", using: :btree
 
   create_table "comment_scores", force: true do |t|
-    t.integer  "points"
+    t.string   "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "comment_scoreable_id"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20150111024101) do
 
   create_table "comments", force: true do |t|
     t.string   "body"
-    t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -57,7 +56,7 @@ ActiveRecord::Schema.define(version: 20150111024101) do
     t.integer "grading_periods_id"
   end
 
-  create_table "criteria", force: true do |t|
+  create_table "criterion", force: true do |t|
     t.text     "body"
     t.integer  "total_points"
     t.datetime "created_at"
@@ -75,8 +74,8 @@ ActiveRecord::Schema.define(version: 20150111024101) do
     t.integer  "total_points"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "imageable_id"
-    t.string   "imageable_type"
+    t.integer  "gradeable_id"
+    t.string   "gradeable_type"
   end
 
   create_table "grading_periods", force: true do |t|
@@ -84,6 +83,14 @@ ActiveRecord::Schema.define(version: 20150111024101) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "points", force: true do |t|
+    t.decimal  "value"
+    t.integer  "pointable_id"
+    t.string   "pointable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -96,8 +103,10 @@ ActiveRecord::Schema.define(version: 20150111024101) do
   end
 
   create_table "rosters_students", id: false, force: true do |t|
-    t.integer "rosters_id"
-    t.integer "students_id"
+    t.integer  "rosters_id"
+    t.integer  "students_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sections", force: true do |t|
@@ -124,7 +133,6 @@ ActiveRecord::Schema.define(version: 20150111024101) do
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest"
   end
 
 end

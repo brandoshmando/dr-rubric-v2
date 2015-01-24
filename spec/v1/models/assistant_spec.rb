@@ -9,7 +9,6 @@ describe Assistant do
   it { should validate_presence_of :last_name }
   it { should validate_presence_of :email }
   it { should validate_presence_of :type }
-  it { should validate_presence_of :password }
 
   describe "model validates" do
     context "first_name is greater than fifty charcters" do
@@ -73,39 +72,5 @@ describe Assistant do
         expect(user2).not_to be_valid
       end
     end
-
-    context "password is valid" do
-
-      it "is invalid when password is shorter than 6 characters" do
-        password = "blah"
-        user = build(:professor, password: password)
-        expect(user).not_to be_valid
-      end
-
-
-      it "is invalid when password is longer than 30 characters" do
-        password = "a" * 31
-        user = build(:professor, password: password)
-        expect(user).not_to be_valid
-      end
-
-      it "is invalid when password is not present" do
-        user = build(:professor, password: "")
-        expect(user).not_to be_valid
-      end
-
-      it "is invalid when password_confirmation is not provided" do
-        user = build(:professor, password: "blahblah", password_confirmation: "")
-        expect(user).not_to be_valid
-      end
-
-
-      it "is invalid when password_confirmation is not the same as the provided password" do
-        user = build(:professor, password: "blahblah", password_confirmation: "thisismypassword!")
-        expect(user).not_to be_valid
-      end
-    end
   end
 end
-
-
