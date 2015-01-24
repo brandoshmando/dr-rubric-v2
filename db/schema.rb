@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150124213214) do
   add_index "assistants_sections", ["section_id"], name: "index_assistants_sections_on_section_id", using: :btree
 
   create_table "comment_scores", force: true do |t|
-    t.string   "body"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "comment_scoreable_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150124213214) do
   end
 
   create_table "comments", force: true do |t|
-    t.string   "body"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "criteria_id"
