@@ -3,4 +3,7 @@ class Eval < ActiveRecord::Base
   has_many :criterion
   has_and_belongs_to_many :courses
   belongs_to :professor
+
+  #Validations
+  validate :title, presence: :true, length: { maximum: 50 }
 end

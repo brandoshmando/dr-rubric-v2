@@ -1,4 +1,4 @@
-require_relative '../rails_helper'
+require 'rails_helper'
 
 describe Assistant do
   it "has valid factory" do
