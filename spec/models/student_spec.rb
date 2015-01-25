@@ -14,4 +14,6 @@ describe Student, :type => :model do
   it { should validate_presence_of :uid }
   it { should ensure_length_of(:uid).is_at_most(25) }
   it { should validate_uniqueness_of :uid }
+  it { should have_many :grades }
+  it { should have_and_belong_to_many :rosters }
 end
