@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150124192318) do
+ActiveRecord::Schema.define(version: 20150125041233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150124192318) do
   add_index "assistants_sections", ["section_id"], name: "index_assistants_sections_on_section_id", using: :btree
 
   create_table "comment_scores", force: true do |t|
-    t.string   "body"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "comment_scoreable_id"
@@ -33,9 +33,10 @@ ActiveRecord::Schema.define(version: 20150124192318) do
   end
 
   create_table "comments", force: true do |t|
-    t.string   "body"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "criteria_id"
   end
 
   create_table "courses", force: true do |t|
@@ -47,13 +48,16 @@ ActiveRecord::Schema.define(version: 20150124192318) do
   end
 
   create_table "courses_evals", id: false, force: true do |t|
-    t.integer "courses_id"
-    t.integer "evals_id"
+    t.integer "eval_id"
+    t.integer "course_id"
   end
 
+  add_index "courses_evals", ["course_id"], name: "index_courses_evals_on_course_id", using: :btree
+  add_index "courses_evals", ["eval_id"], name: "index_courses_evals_on_eval_id", using: :btree
+
   create_table "courses_grading_periods", id: false, force: true do |t|
-    t.integer "courses_id"
-    t.integer "grading_periods_id"
+    t.integer "course_id"
+    t.integer "grading_period_id"
   end
 
   create_table "criterion", force: true do |t|
@@ -61,6 +65,7 @@ ActiveRecord::Schema.define(version: 20150124192318) do
     t.integer  "total_points"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "eval_id"
   end
 
   create_table "evals", force: true do |t|
@@ -68,6 +73,7 @@ ActiveRecord::Schema.define(version: 20150124192318) do
     t.integer  "total_points"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "professor_id"
   end
 
   create_table "grades", force: true do |t|
@@ -88,25 +94,29 @@ ActiveRecord::Schema.define(version: 20150124192318) do
   end
 
   create_table "points", force: true do |t|
-    t.decimal  "value"
     t.integer  "pointable_id"
     t.string   "pointable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "value"
   end
 
   create_table "rosters", force: true do |t|
     t.integer  "section"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "section_id"
+  end
+
+  create_table "rosters_sections", id: false, force: true do |t|
+    t.integer "roster_id"
+    t.integer "section_id"
   end
 
   create_table "rosters_students", id: false, force: true do |t|
-    t.integer  "rosters_id"
-    t.integer  "students_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "roster_id"
+    t.integer  "student_id"
   end
 
   create_table "sections", force: true do |t|
@@ -114,7 +124,6 @@ ActiveRecord::Schema.define(version: 20150124192318) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "course_id"
-    t.integer  "roster_id"
   end
 
   create_table "students", force: true do |t|
