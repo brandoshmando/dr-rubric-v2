@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150125034953) do
+ActiveRecord::Schema.define(version: 20150125041233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,11 +94,11 @@ ActiveRecord::Schema.define(version: 20150125034953) do
   end
 
   create_table "points", force: true do |t|
-    t.decimal  "value"
     t.integer  "pointable_id"
     t.string   "pointable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "value"
   end
 
   create_table "rosters", force: true do |t|
