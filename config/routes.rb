@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: {sessions:'sessions'}, path: "auth", path_names: { sign_in: 'login', sign_out: 'logout' }
+
   namespace :v1, defaults: { format: :json } do
   end
   # The priority is based upon order of creation: first created -> highest priority.
