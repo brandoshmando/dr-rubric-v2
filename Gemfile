@@ -11,6 +11,8 @@ gem 'pg'
 
 gem 'devise'
 
+gem 'simple_token_authentication', '~> 1.0'
+
 group :developement, :test do
   gem 'spring'
   gem 'rspec-rails'
