@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   namespace :v1, defaults: { format: :json } do
   end
+
+  post '/professors/', to: 'professor#create'
 end
