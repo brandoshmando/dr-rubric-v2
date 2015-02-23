@@ -144,7 +144,7 @@ GEM
     rspec-support (3.1.2)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
-    simple_token_authentication (1.7.0)
+    simple_token_authentication (1.8.0)
       actionmailer (>= 3.2.6, < 5)
       actionpack (>= 3.2.6, < 5)
       devise (~> 3.2)
@@ -189,6 +189,6 @@ DEPENDENCIES
   rb-fsevent
   rspec-rails
   shoulda-matchers
-  simple_token_authentication (~> 1.0)
+  simple_token_authentication (= 1.8)
   spring
   spring-commands-rspec

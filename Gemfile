@@ -11,7 +11,7 @@ gem 'pg'
 
 gem 'devise'
 
-gem 'simple_token_authentication', '~> 1.0'
+gem 'simple_token_authentication', '1.8'
 
 group :developement, :test do
   gem 'spring'
