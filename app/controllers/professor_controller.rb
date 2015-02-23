@@ -1,4 +1,4 @@
-class V1::ProfessorController < ApplicationController
+class ProfessorController < ApplicationController
 
   def create
     @professor = Professor.new(params[:professor])

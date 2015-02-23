@@ -9,6 +9,10 @@ gem 'active_model_serializers', github: 'rails-api/active_model_serializers', br
 
 gem 'pg'
 
+gem 'devise'
+
+gem 'simple_token_authentication', '1.8'
+
 group :developement, :test do
   gem 'spring'
   gem 'rspec-rails'
