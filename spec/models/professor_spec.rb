@@ -11,6 +11,7 @@ describe Professor do
   it { should validate_presence_of :type }
   it { should have_many :evals }
   it { should have_many :courses }
+  it { should have_one :token }
 
   describe "model validates" do
     context "first_name is greater than fifty charcters" do
