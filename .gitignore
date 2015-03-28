@@ -15,4 +15,4 @@
 /log/*.log
 /tmp
 
-/db/schema.rb
+db/schema.rb
