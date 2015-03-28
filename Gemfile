@@ -9,6 +9,8 @@ gem 'active_model_serializers', github: 'rails-api/active_model_serializers', br
 
 gem 'pg'
 
+gem 'has_secure_token'
+
 group :developement, :test do
   gem 'spring'
   gem 'rspec-rails'
