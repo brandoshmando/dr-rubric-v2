@@ -9,6 +9,6 @@ class User < ActiveRecord::Base
   before_create :tokenize
 
   def tokenize
-    self.token = Token.create
+    self.token ||= Token.create
   end
 end
