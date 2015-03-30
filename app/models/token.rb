@@ -2,10 +2,16 @@ class Token < ActiveRecord::Base
   belongs_to :user
   has_secure_token :value
 
-  validates :value, presence: true
+  before_validation :set_expires_at, on: :create
+
   validates :expires_at, presence: true
 
-  before_create :set_expires_at
+  def token_expired?
+    if self.expiration_date < DateTime.now.to_date
+      self.delete
+      return true
+    end
+  end
 
   def set_expires_at
     self.expires_at = DateTime.now.to_date + 30.days

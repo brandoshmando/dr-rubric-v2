@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence: true,  uniqueness: true, length: { maximum: 100 }, format: { with: VALID_EMAIL_REGEX }
 
-  before_create :tokenize
-
   def tokenize
     self.token ||= Token.create
   end

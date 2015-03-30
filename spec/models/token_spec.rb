@@ -5,7 +5,6 @@ describe Token, :type => :model do
     expect(create(:token)).to be_valid
   end
 
-  it { should validate_presence_of :value }
   it { should validate_presence_of :expires_at }
   it { should belong_to :user }
 end
