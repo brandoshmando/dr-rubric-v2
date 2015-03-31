@@ -1,9 +1,12 @@
 class Token < ActiveRecord::Base
+  #Relatinships
   belongs_to :user
-  has_secure_token :value
 
+  #Callbacks
+  has_secure_token :value
   before_validation :set_expires_at, on: :create
 
+  #Validations
   validates :expires_at, presence: true
 
   def token_expired?
